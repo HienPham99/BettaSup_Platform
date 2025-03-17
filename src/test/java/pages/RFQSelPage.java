@@ -42,14 +42,17 @@ public class RFQSelPage {
     private By labelRequestDetail = By.id("detail-request");
     private By formDetaiSellerRequest = By.xpath("//p[@id='detail-request']/following::div[3]");
     private By productName = By.xpath("//div[normalize-space()='Seller request']/following-sibling::div//div[contains(@class,'text-textMD font-semibold line-clamp-1')]");
+    private By buttonQuotedRequestDetail = By.xpath("//div[normalize-space()='Received quotes']/following-sibling::div//span[normalize-space()='Quoted']");
+    private By buttonAccept= By.xpath("//span[normalize-space()='Accept & Import to My product']");
+    private By msgImportProductSuccess= By.xpath("//div[@role='alert']");
 
     public void verifyHeaderRFQSelPage() {
         SoftAssert softAssert = new SoftAssert();
         waitForPageLoaded();
         waitForElementVisible(headerRFQSelPage);
-        softAssert.assertTrue(checkElementDisplayed(headerRFQSelPage), "Header Customer NOT displayed");
-        softAssert.assertEquals(getElementText(headerRFQSelPage), headerRFQPageExpected, "Header Customer page NOT match.");
-        LogUtils.info("\uD83C\uDF81Actual Header của Customers page là: " + getElementText(headerRFQSelPage));
+        softAssert.assertTrue(checkElementDisplayed(headerRFQSelPage), "Header RFQ Seller NOT displayed");
+        softAssert.assertEquals(getElementText(headerRFQSelPage), headerRFQPageExpected, "Header RFQ Seller page NOT match.");
+        LogUtils.info("\uD83C\uDF81Actual Header của RFQ Seller page là: " + getElementText(headerRFQSelPage));
         LogUtils.info("☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️☘️");
         softAssert.assertAll();
     }
@@ -58,14 +61,13 @@ public class RFQSelPage {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(checkElementDisplayed(tabsItem), "Tabs item not display");
         LogUtils.info("Tabs item RFQ của Seller:\n" + getElementText(tabsItem));
-
     }
 
     public void verifyListItemRFQSel() {
         waitForPageLoaded();
-        Assert.assertTrue(checkElementExist(listItemRFQ), "ListItem NOT exists");
-        Assert.assertTrue(checkElementDisplayed(listItemRFQ), "ListItem NOT displayed");
-        LogUtils.info("\uD83E\uDD29List Item in Customer page is: " + getElementText(listItemRFQ));
+        Assert.assertTrue(checkElementExist(listItemRFQ), "List Item NOT exists");
+        Assert.assertTrue(checkElementDisplayed(listItemRFQ), "List Item NOT displayed");
+        LogUtils.info("\uD83E\uDD29List Item in RFQ page is: " + getElementText(listItemRFQ));
     }
 
     public void clickButtonPostNewRequest() {
@@ -76,7 +78,8 @@ public class RFQSelPage {
     public void verifyFormPostYourRequest() {
         waitForPageLoaded();
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(checkElementDisplayed(formPostNewRequest), "Msg post new request not display");
+        softAssert.assertTrue(checkElementDisplayed(formPostNewRequest), "Label form not display");
+        softAssert.assertAll();
     }
 
     public void inputInforRequest() {
@@ -86,18 +89,10 @@ public class RFQSelPage {
         sleep(1);
         clickElement(buttonGetInfomation);
         sleep(2);
-        //Assert.assertEquals(checkElementDisplayed(productNamePortNewRequest), "Product name NOT display");
         clickElement(buttonCreate);
         clickElement(buttonConfirm);
         waitForPageLoaded();
     }
-
-//    public void postNewRequestSuccess() {
-//        SoftAssert softAssert = new SoftAssert();
-//        waitForPageLoaded();
-//        //inputInforRequest();
-//        softAssert.assertTrue(checkElementDisplayed(msgPostRequestSuccess), "Msg post new request not display");
-//    }
 
     //Viết hàm search request name sau ki post success
     public void searchRequest() {
@@ -117,6 +112,20 @@ public class RFQSelPage {
         softAssert.assertTrue(checkElementDisplayed(formDetaiSellerRequest), " ");
         softAssert.assertEquals(getElementText(productName), excelHelper.getCellData("PRODUCT_NAME", 1), "Product name NOT match.");
         sleep(1);
+        softAssert.assertAll();
     }
 
+    public void acceptQuoteSuccess(){
+        clickElement(buttonQuotedRequestDetail);
+        waitForPageLoaded();
+        clickElement(buttonAccept);
+        sleep(1);
+        verifyImportProductSuccess();
+    }
+    public void verifyImportProductSuccess(){
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(checkElementDisplayed(msgImportProductSuccess), "Msg NOT display");
+        LogUtils.info("Msg Import product success: "+ getElementText(msgImportProductSuccess));
+        waitForPageLoaded();
+    }
 }

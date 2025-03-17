@@ -36,38 +36,18 @@ public class LoginSelPage {
         return new DashboardSel();
     }
 
-//    public DashboardSup loginSuccessSup() {
-//        ExcelHelper excelHelper = new ExcelHelper();
-//        excelHelper.setExcelFile("src/test/resources/testdata/DataLogin.xlsx", "bettaSup");
-//        loginBSSup(
-//                excelHelper.getCellData("EMAIL", 2),
-//                excelHelper.getCellData("PASSWORD", 2)
-//        );
-//        return new DashboardSup();
-//    }
-
     private void setEmailSel(String email) {
         setText(inputEmailBsSel, email);
     }
-//    private void setEmailSup(String email) {
-//        setText(inputEmailBSup, email);
-//    }
 
     private void setPasswordSel(String password) {
         setText(inputPasswordBsSel, password);
     }
-//    private void setPasswordSup(String password) {
-//        setText(inputPasswordBsSup, password);
-//    }
 
     private void clickButtonLoginSel() {
         clickElement(buttonLoginBsSel);
         waitForPageLoaded();
     }
-//    private void clickButtonLoginSup() {
-//        clickElement(buttonLoginBsSup);
-//        waitForPageLoaded();
-//    }
 
     public void verifyLoginSelSuccess() {
         waitForPageLoaded();
@@ -76,10 +56,6 @@ public class LoginSelPage {
         LogUtils.info("Section của of Seller:\n" + getElementText(DashboardSel.menuTotal));
         LogUtils.info("*************************");
     }
-//    public void verifyLoginSupSuccess() {
-//        waitForPageLoaded();
-//        Assert.assertFalse(getDriver().getCurrentUrl().contains("dashboard"), "\uD83E\uDD40Login Unsuccessful. Vẫn ở trang login page.");
-//    }
 
     public DashboardSel loginBSSel(String email, String password) {
         opeURL(getValue("url_Seller"));
@@ -90,12 +66,4 @@ public class LoginSelPage {
         return new DashboardSel();
     }
 
-//    public DashboardSup loginBSSup(String email, String password) {
-//        opeURL(getValue("url_Seller"));
-//        waitForPageLoaded();
-//        setEmailSup(email);
-//        setPasswordSup(password);
-//        clickButtonLoginSup();
-//        return new DashboardSup();
-//    }
 }
