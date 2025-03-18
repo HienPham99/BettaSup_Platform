@@ -11,7 +11,7 @@ public class DashboardSup {
     public static By menuDashboardTotal = By.xpath("//li[@id='menu-item-dashboard']/parent::ul");
     public static By menuDashboard = By.xpath("//span[normalize-space()='Dashboard']");
     public static By menuRFQ = By.id("menu-item-rfq");
-
+    private By menuProduct = By.id("menu-item-product");
     private By menuOrder = By.id("menu-item-order");
     private By menuMyBalance = By.id("menu-item-my-balance");
 
@@ -23,6 +23,12 @@ public class DashboardSup {
         clickElement(menuRFQ);
         waitForPageLoaded();
         return new RFQSupPage();
+    }
+
+    public ProductPage clickMenuProduct() {
+        clickElement(menuProduct);
+        waitForPageLoaded();
+        return new ProductPage();
     }
 
     public LoginSupPage logout() {

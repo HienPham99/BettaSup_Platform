@@ -45,6 +45,7 @@ public class RFQSelPage {
     private By buttonQuotedRequestDetail = By.xpath("//div[normalize-space()='Received quotes']/following-sibling::div//span[normalize-space()='Quoted']");
     private By buttonAccept= By.xpath("//span[normalize-space()='Accept & Import to My product']");
     private By msgImportProductSuccess= By.xpath("//div[@role='alert']");
+    private By buttonViewInMyProduct = By.xpath("//span[normalize-space()='View in My product']");
 
     public void verifyHeaderRFQSelPage() {
         SoftAssert softAssert = new SoftAssert();
@@ -116,6 +117,8 @@ public class RFQSelPage {
     }
 
     public void acceptQuoteSuccess(){
+        clickElement(fistItemRequest);
+        sleep(2);
         clickElement(buttonQuotedRequestDetail);
         waitForPageLoaded();
         clickElement(buttonAccept);
@@ -127,5 +130,10 @@ public class RFQSelPage {
         softAssert.assertTrue(checkElementDisplayed(msgImportProductSuccess), "Msg NOT display");
         LogUtils.info("Msg Import product success: "+ getElementText(msgImportProductSuccess));
         waitForPageLoaded();
+    }
+    public ProductPage clickViewInMyProduct(){
+        clickElement(buttonViewInMyProduct);
+        waitForPageLoaded();
+        return new ProductPage();
     }
 }
