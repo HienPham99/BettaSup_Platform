@@ -102,6 +102,7 @@ public class RFQSelPage {
         clickElement(tabAll);
         sleep(1);
         setText(inputSearch, excelHelper.getCellData("PRODUCT_NAME", 1));
+        sleep(3);
         clickElement(fistItemRequest);
         waitForPageLoaded();
     }

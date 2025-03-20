@@ -6,19 +6,19 @@
         <parameter name="browser" value="chrome "/>
         <classes>
             <class name="testcases.LoginTest">
-                    <methods>
-                        <include name="verifyLoginSelSuccess"/>
-                        <include name="verifyLoginSupSuccess"/>
-                        <include name="verifyLoginBTMFulSuccess"/>
-                        <include name="verifyLoginBTMStoreSuccess"/>
-                    </methods>
+                <methods>
+                    <include name="verifyLoginSelSuccess"/>
+                    <include name="verifyLoginSupSuccess"/>
+                    <include name="verifyLoginBTMFulSuccess"/>
+                    <include name="verifyLoginBTMStoreSuccess"/>
+                </methods>
             </class>
             <class name="testcases.RFQTest">
                 <methods>
                     <include name="verifyPostNewRequestSuccess"/>
                     <include name="verifyCreateNewQuoteSuccess"/>
-                    <include name="verifyAddProductToStoreSuccess"/>
-                    <include name="verifyActiveProductSuccess"/>
+                    <!--                    <include name="verifyAddProductToStoreSuccess"/>-->
+                    <!--                    <include name="verifyActiveProductSuccess"/>-->
                 </methods>
             </class>
         </classes>

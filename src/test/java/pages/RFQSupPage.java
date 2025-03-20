@@ -88,7 +88,7 @@ public class RFQSupPage {
         clickElement(tabAll);
         sleep(1);
         setText(inputSearch, excelHelper.getCellData("PRODUCT_NAME", 1));
-        //clickElement(fistItemRFQ);
+        sleep(3);
         waitForPageLoaded();
     }
 

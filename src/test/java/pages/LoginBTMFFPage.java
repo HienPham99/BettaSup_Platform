@@ -9,51 +9,53 @@ import static keywords.WebUI.*;
 
 public class LoginBTMFFPage {
 
-    private String itemDashboardSelerExpected = "Dashboard";
+    //Location of Fulfillment
+    private By inputEmailFul = By.id("email-input-login");
+    private By inputPasswordFul = By.id("password-input-login");
+    private By buttonLoginFul = By.id("button-login");
 
-    //Location of Seller_BS
-    private By inputEmailBsSel = By.id("login_email");
-    private By inputPasswordBsSel = By.id("login_password");
-    private By buttonLoginBsSel = By.xpath("//button[@type='submit']");
+   // private By a = By.xpath("");
 
-    public DashboardSel loginSuccessSel() {
+
+
+    public PerformanceBTMFulPage loginSuccessFul() {
         ExcelHelper excelHelper = new ExcelHelper();
         excelHelper.setExcelFile("src/test/resources/testdata/DataLogin.xlsx", "bettaMax");
-        loginBSSel(
+        loginBTMFul(
                 excelHelper.getCellData("EMAIL", 2),
                 excelHelper.getCellData("PASSWORD", 2)
         );
-        return new DashboardSel();
+        return new PerformanceBTMFulPage();
     }
 
     private void setEmailSel(String email) {
-        setText(inputEmailBsSel, email);
+        setText(inputEmailFul, email);
     }
 
     private void setPasswordSel(String password) {
-        setText(inputPasswordBsSel, password);
+        setText(inputPasswordFul, password);
     }
 
-    private void clickButtonLoginSel() {
-        clickElement(buttonLoginBsSel);
+    private void clickButtonLoginFul() {
+        clickElement(buttonLoginFul);
         waitForPageLoaded();
     }
+//
+//    public void verifyLoginFulSuccess() {
+//        waitForPageLoaded();
+//        //Assert.assertFalse(getDriver().getCurrentUrl().contains("dashboard"), "\uD83E\uDD40Login Unsuccessful. Vẫn ở trang login page.");
+//        assertEquals(getElementText(DashboardSel.menuDashboard), itemDashboardSelerExpected, "Content menu Dashboard page NOT match.");
+//        LogUtils.info("Section của of Seller:\n" + getElementText(DashboardSel.menuTotal));
+//        LogUtils.info("*************************");
+//    }
 
-    public void verifyLoginSelSuccess() {
-        waitForPageLoaded();
-        //Assert.assertFalse(getDriver().getCurrentUrl().contains("dashboard"), "\uD83E\uDD40Login Unsuccessful. Vẫn ở trang login page.");
-        assertEquals(getElementText(DashboardSel.menuDashboard), itemDashboardSelerExpected, "Content menu Dashboard page NOT match.");
-        LogUtils.info("Section của of Seller:\n" + getElementText(DashboardSel.menuTotal));
-        LogUtils.info("*************************");
-    }
-
-    public DashboardSel loginBSSel(String email, String password) {
+    public PerformanceBTMFulPage loginBTMFul(String email, String password) {
         opeURL(getValue("url_FulfillBM"));
         waitForPageLoaded();
         setEmailSel(email);
         setPasswordSel(password);
-        clickButtonLoginSel();
-        return new DashboardSel();
+        clickButtonLoginFul();
+        return new PerformanceBTMFulPage();
     }
 
 }

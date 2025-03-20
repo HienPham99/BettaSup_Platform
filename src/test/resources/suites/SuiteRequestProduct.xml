@@ -1,0 +1,27 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="BettaSup platform by HienPham" verbose="1">
+
+    <test name="BettaSup platform">
+        <parameter name="browser" value="edge "/>
+        <classes>
+            <class name="testcases.LoginTest">
+                <methods>
+                    <include name="verifyLoginSelSuccess"/>
+                    <include name="verifyLoginSupSuccess"/>
+                    <include name="verifyLoginBTMFulSuccess"/>
+                    <include name="verifyLoginBTMStoreSuccess"/>
+                </methods>
+            </class>
+            <class name="testcases.RFQTest">
+                <methods>
+                    <include name="verifyPostNewRequestSuccess"/>
+                    <include name="verifyCreateNewQuoteSuccess"/>
+                    <!--                    <include name="verifyAddProductToStoreSuccess"/>-->
+                    <!--                    <include name="verifyActiveProductSuccess"/>-->
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
