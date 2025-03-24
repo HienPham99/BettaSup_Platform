@@ -3,7 +3,7 @@
 <suite name="BettaSup platform by HienPham" verbose="1">
 
     <test name="BettaSup platform">
-        <parameter name="browser" value="edge "/>
+        <parameter name="browser" value="chrome"/>
         <classes>
             <class name="testcases.LoginTest">
                 <methods>
@@ -17,8 +17,9 @@
                 <methods>
                     <include name="verifyPostNewRequestSuccess"/>
                     <include name="verifyCreateNewQuoteSuccess"/>
-                    <!--                    <include name="verifyAddProductToStoreSuccess"/>-->
-                    <!--                    <include name="verifyActiveProductSuccess"/>-->
+                    <include name="verifyAcceptAndImportProductFromSupplierToSellerSuccess"/>
+                    <include name="verifyAddProductToStoreSuccess"/>
+                    <include name="verifyActiveProductSuccess"/>
                 </methods>
             </class>
         </classes>

@@ -112,11 +112,19 @@ public class RFQSupPage {
         softAssert.assertAll();
     }
 
+//    public void inputChooseProduct() {
+//        //setText(inputChooseProduct, "product");
+//        setText(inputChooseProduct, "THE PEARL SOURCE");
+//        sleep(1);
+//        verifyProductSuggest();
+//    }
     public void inputChooseProduct() {
-        //setText(inputChooseProduct, "product");
-        setText(inputChooseProduct, "Chang");
-        sleep(1);
+        ExcelHelper excelHelper = new ExcelHelper();
+        excelHelper.setExcelFile("src/test/resources/testdata/DataLogin.xlsx", "dataProductlink");
+        setText(inputChooseProduct, excelHelper.getCellData("PRODUCT_NAME", 2));
+        sleep(2);
         verifyProductSuggest();
+        waitForPageLoaded();
     }
 
     public void clickCreateNewProduct() {

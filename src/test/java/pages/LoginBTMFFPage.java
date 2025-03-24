@@ -55,6 +55,7 @@ public class LoginBTMFFPage {
         setEmailSel(email);
         setPasswordSel(password);
         clickButtonLoginFul();
+        sleep(3);
         return new PerformanceBTMFulPage();
     }
 
